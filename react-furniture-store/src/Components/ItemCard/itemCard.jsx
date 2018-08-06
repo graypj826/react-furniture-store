@@ -1,9 +1,16 @@
 import React, { Component } from "react"
 
 class ItemCard extends Component {
+    
     render(){
         return(
-            <h1> Hello World! </h1>
+            <div>
+                <h1> Item Card </h1>
+                <img src={this.props.item.img}/>
+                {this.props.item.id}
+                {this.props.item.value}
+                <button> + </button>
+            </div>
         )
     }
 }
