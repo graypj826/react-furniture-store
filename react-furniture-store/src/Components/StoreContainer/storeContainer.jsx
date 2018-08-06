@@ -3,6 +3,7 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
+import CreateItem from "../CreateItem/CreateItem";
 
 class StoreContainer extends Component {
     constructor () {
@@ -14,6 +15,26 @@ class StoreContainer extends Component {
                 {id: 3, value: 0, count:0, img: "https://images.furniture.com/living-rooms/sofas/bart-espresso-klik-klak-10952807.jpg"},
                 {id: 4, value: 0, count:0, img: "https://target.scene7.com/is/image/Target/50085279?wid=328&hei=328&qlt=80&fmt=pjpeg"},
             ]
+        }
+    }
+    addItem = async (item, e) => {
+        e.preventDefault();
+
+        try {
+            const createItem = await fetch('http://localhost:9000/api/v1/items', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(item),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const parsedResponse = await createMovie.json();
+
+            this.setState({items: [...this.state.items, parsedResponse.data]});
+        } catch (err) {
+            console.log(err);
         }
     }
     handleIncrement = (item) => {
@@ -55,6 +76,8 @@ class StoreContainer extends Component {
                     item={this.state.items}
                     onhandleIncrement={this.state.handleIncrement}
                 />
+
+                <CreateItem addItem={this.addItem}/>
                 
             </div>
         )   
