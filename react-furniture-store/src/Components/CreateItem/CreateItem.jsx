@@ -14,7 +14,6 @@ class CreateItem extends Component {
         this.setState({[e.currentTarget.name]: e.currentTarget.value});
     }
     render() {
-        console.log(this.props, ' this is props');
         return (
             <div>
                 <h1>Create Item</h1>

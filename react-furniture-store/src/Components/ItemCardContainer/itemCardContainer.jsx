@@ -12,6 +12,7 @@ class ItemCardContainer extends Component {
                     key={item.id}
                     item={item}
                     onIncrement={this.props.onIncrement}
+                    addToCart={this.props.addToCart}
                 />  
                 )}
                

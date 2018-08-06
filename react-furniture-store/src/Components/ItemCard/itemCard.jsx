@@ -9,9 +9,9 @@ class ItemCard extends Component {
                 <p> Quantity? </p>
                 {this.props.item.count}
                 <img src={this.props.item.img}/>
-                {this.props.item.id}
+                {this.props.item.title}
                 {this.props.item.value}
-                <button onClick={this.props.onIncrement.bind(null,this.props.item)}> + </button>
+                <button onClick={this.props.addToCart.bind(null,this.props.item)}> + </button>
             {/* .bind */}
             </div>
         )
