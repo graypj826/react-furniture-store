@@ -15,10 +15,19 @@ class ShoppingCart extends Component {
                 <button> 
                     checkout
                 </button>
-            </div>
+            
             //stripe will go here
+                <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                <div className="example">
+                <h1>React Stripe Elements Example</h1>
+                <Elements>
+                    <CheckoutForm />
+                </Elements>
+                </div>
+            </StripeProvider>
+          </div>
         )
     }
 }
 
-export default ShoppingCart 
+export default ShoppingCart; 
