@@ -3,30 +3,52 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
+import CreateItem from "../CreateItem/CreateItem";
 
 class StoreContainer extends Component {
     constructor () {
         super(),
         this.state = {
-            items: [
-            ]
+            items: [],
         }
-    }
+    };
     componentDidMount(){
-        this.getItems().then((items)=>{
-            this.setState({items: items.data})
+        this.getItems().then((items) => {
+            this.setState({
+                items: items.data
+            })
         }).catch((err) => {
             console.log(err);
-        })
-    }
+        });
+    };
     getItems = async () => {
         const items = await fetch('http://localhost:9000/api/v1/items', {
             method: "GET" 
         });
         const itemsJson = await items.json();
-        console.log(itemsJson)
+        console.log(itemsJson);
         return itemsJson;
-    }
+    };
+    addItem = async (item, e) => {
+        e.preventDefault();
+
+        try {
+            const createItem = await fetch('http://localhost:9000/api/v1/items', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(item),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const parsedResponse = await createItem.json();
+
+            this.setState({items: [...this.state.items, parsedResponse.data]});
+        } catch (err) {
+            console.log(err);
+        }
+    };
     handleIncrement = (item) => {
         console.log("event increment called")
         console.log(item)
@@ -70,6 +92,8 @@ class StoreContainer extends Component {
                     item={this.state.items}
                     onIncrement={this.handleIncrement}
                 />
+
+                <CreateItem addItem={this.addItem}/>
                 
             </div>
         )   
