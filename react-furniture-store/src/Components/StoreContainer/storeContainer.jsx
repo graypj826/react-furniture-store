@@ -22,7 +22,7 @@ class StoreContainer extends Component {
     getItems = async () => {
         const items = await fetch('http://localhost:9000/api/v1/items', {
             method: "GET" 
-        })
+        });
         const itemsJson = await items.json();
         console.log(itemsJson)
         return itemsJson;
