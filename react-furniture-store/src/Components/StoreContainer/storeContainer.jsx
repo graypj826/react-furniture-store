@@ -9,12 +9,7 @@ class StoreContainer extends Component {
     constructor () {
         super(),
         this.state = {
-            items: [
-                {id: 1, value: 0, count:0, img: "https://ii.worldmarket.com/fcgi-bin/iipsrv.fcgi?FIF=/images/worldmarket/source/55782_XXX_v1.tif&qlt=267&wid=267&cvt=jpeg"},
-                {id: 2, value: 0, count:0, img: "https://i5.walmartimages.com/dfw/4ff9c6c9-b395/k2-_38379e60-692d-4690-8ff6-215f858fec0b.v1.jpg?odnWidth=912&odnHeight=500&odnBg=ffffff"},
-                {id: 3, value: 0, count:0, img: "https://images.furniture.com/living-rooms/sofas/bart-espresso-klik-klak-10952807.jpg"},
-                {id: 4, value: 0, count:0, img: "https://target.scene7.com/is/image/Target/50085279?wid=328&hei=328&qlt=80&fmt=pjpeg"},
-            ]
+            items: [],
         }
     }
     addItem = async (item, e) => {
@@ -36,21 +31,39 @@ class StoreContainer extends Component {
         } catch (err) {
             console.log(err);
         }
+    componentDidMount(){
+        this.getItems().then((items)=>{
+            this.setState({items: items.data})
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    getItems = async () => {
+        const items = await fetch('http://localhost:9000/api/v1/items', {
+            method: "GET" 
+        });
+        const itemsJson = await items.json();
+        console.log(itemsJson)
+        return itemsJson;
     }
     handleIncrement = (item) => {
         console.log("event increment called")
         console.log(item)
-        const newItemsArray = [...this.state.item]
+        const newItemsArray = [...this.state.items]
         const index = newItemsArray.indexOf(item);
+        console.log(index)
         newItemsArray[index] = {...item};
+        console.log(newItemsArray[index])
         newItemsArray[index].count++;
-        this.setState({newItemsArray});  
+        console.log(newItemsArray[index])
+        console.log({newItemsArray})
+        this.setState({items : newItemsArray});  
     };
     handleReset = () =>{
         console.log("event reset called")
-        const items = this.state.items.map(counter => {
-            counter.value =0;
-            return counter;
+        const items = this.state.items.map(item => {
+            item.value =0;
+            return item;
         })
         this.setState({items})
     };
@@ -74,7 +87,7 @@ class StoreContainer extends Component {
 
                 <ItemCardContainer 
                     item={this.state.items}
-                    onhandleIncrement={this.state.handleIncrement}
+                    onIncrement={this.handleIncrement}
                 />
 
                 <CreateItem addItem={this.addItem}/>

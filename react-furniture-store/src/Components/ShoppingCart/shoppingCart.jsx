@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx"
+import {Elements, StripeProvider} from 'react-stripe-elements';
 
 class ShoppingCart extends Component {
     render(){
@@ -14,9 +16,7 @@ class ShoppingCart extends Component {
                 </button>
                 <button> 
                     checkout
-                </button>
-            
-            //stripe will go here
+                </button> 
                 <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
                 <div className="example">
                 <h1>React Stripe Elements Example</h1>
