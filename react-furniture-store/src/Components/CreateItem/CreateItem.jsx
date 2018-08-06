@@ -16,21 +16,24 @@ class CreateItem extends Component {
     render() {
         console.log(this.props, ' this is props');
         return (
-            <form onSubmit={this.props.addItem.bind(this, this.state)}>
-                <label>
-                    Item Title:
-                    <input type="text" name="title" onChange={this.updateItem}/>
-                </label>
-                <label>
-                    Item Description:
-                    <input type="text" name="description" onChange={this.updateItem}/>
-                </label>
-                <label>
-                    Item Price:
-                    <input type="text" name="price" onChange={this.updateItem}/>
-                </label>
-                <input type="Submit"/>
-            </form>
+            <div>
+                <h1>Create Item</h1>
+                <form onSubmit={this.props.addItem.bind(this, this.state)}>
+                    <label>
+                        Item Title:
+                        <input type="text" name="title" onChange={this.updateItem}/>
+                    </label>
+                    <label>
+                        Item Description:
+                        <input type="text" name="description" onChange={this.updateItem}/>
+                    </label>
+                    <label>
+                        Item Price:
+                        <input type="text" name="price" onChange={this.updateItem}/>
+                    </label>
+                    <input type="Submit"/>
+                </form>
+            </div>
         )
     }
 }

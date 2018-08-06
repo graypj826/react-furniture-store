@@ -11,7 +11,24 @@ class StoreContainer extends Component {
         this.state = {
             items: [],
         }
-    }
+    };
+    componentDidMount(){
+        this.getItems().then((items) => {
+            this.setState({
+                items: items.data
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
+    };
+    getItems = async () => {
+        const items = await fetch('http://localhost:9000/api/v1/items', {
+            method: "GET" 
+        });
+        const itemsJson = await items.json();
+        console.log(itemsJson);
+        return itemsJson;
+    };
     addItem = async (item, e) => {
         e.preventDefault();
 
@@ -25,27 +42,13 @@ class StoreContainer extends Component {
                 }
             });
 
-            const parsedResponse = await createMovie.json();
+            const parsedResponse = await createItem.json();
 
             this.setState({items: [...this.state.items, parsedResponse.data]});
         } catch (err) {
             console.log(err);
         }
-    componentDidMount(){
-        this.getItems().then((items)=>{
-            this.setState({items: items.data})
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
-    getItems = async () => {
-        const items = await fetch('http://localhost:9000/api/v1/items', {
-            method: "GET" 
-        });
-        const itemsJson = await items.json();
-        console.log(itemsJson)
-        return itemsJson;
-    }
+    };
     handleIncrement = (item) => {
         console.log("event increment called")
         console.log(item)
