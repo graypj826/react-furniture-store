@@ -89,7 +89,8 @@ class StoreContainer extends Component {
     }
     calculateTotal = () => {
         console.log("calculate total")
-        let total = 0
+        let total = this.state.totalPrice
+        console.logt("this is totalPrice at start", this.state.totalPrice)
         this.state.shoppingCart.map(item => {
             total += item.price
             return total
