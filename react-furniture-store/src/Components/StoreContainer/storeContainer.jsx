@@ -10,6 +10,8 @@ class StoreContainer extends Component {
         super(),
         this.state = {
             items: [],
+            shoppingCart: [],
+            totalPrice: 0
         }
     };
     componentDidMount(){
@@ -50,16 +52,10 @@ class StoreContainer extends Component {
         }
     };
     handleIncrement = (item) => {
-        console.log("event increment called")
-        console.log(item)
         const newItemsArray = [...this.state.items]
         const index = newItemsArray.indexOf(item);
-        console.log(index)
         newItemsArray[index] = {...item};
-        console.log(newItemsArray[index])
         newItemsArray[index].count++;
-        console.log(newItemsArray[index])
-        console.log({newItemsArray})
         this.setState({items : newItemsArray});  
     };
     handleReset = () =>{
@@ -75,13 +71,40 @@ class StoreContainer extends Component {
         const counters = this.state.counters.filter(counter => counter.id !== counterId)
         this.setState({counters})
     };
+     //Patrick ADD here--------------------------------
+     addToCart = (item) => {
+        console.log("event added item to cart")
+        console.log(item)
+        const newCartArray = [...this.state.shoppingCart]
+        const newCartItem = {...item};
+        console.log(newCartItem)
+        newCartArray.push(newCartItem)
+        console.log({newCartArray})
+        this.setState({shoppingCart : newCartArray});  
+    };
+    handleItemClick = (item) => {
+        // this.handleIncrement(item);
+        this.addToCart(item);
+        this.calculateTotal();
+    }
+    calculateTotal = () => {
+        console.log("calculate total")
+        let total = 0
+        this.state.shoppingCart.map(item => {
+            total += item.price
+            return total
+        })
+        this.setState({totalPrice : total})
+        console.log(total)
+        console.log(this.state.totalPrice)
+    }
     render(){
         return(
             <div>
                 <h1> Store Container </h1>
                 <Title />
-                <ShoppingCart item={this.state.items} onReset = {this.state.handleReset}
-                onDelete = {this.state.handleDelete}    
+                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalPrice={this.state.totalPrice} onReset = {this.state.handleReset}
+                onDelete = {this.state.handleDelete}     
                 />
                 
                 <ItemCarousel 
@@ -90,7 +113,10 @@ class StoreContainer extends Component {
 
                 <ItemCardContainer 
                     item={this.state.items}
-                    onIncrement={this.handleIncrement}
+                    // onIncrement={this.handleIncrement}
+                    // addToCart={this.addToCart}
+                    // calculateTotal={this.calculateTotal}
+                    handleItemClick={this.handleItemClick}
                 />
 
                 <CreateItem addItem={this.addItem}/>

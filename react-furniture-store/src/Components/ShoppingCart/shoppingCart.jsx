@@ -1,16 +1,27 @@
 import React, { Component } from "react"
 import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx"
 import {Elements, StripeProvider} from 'react-stripe-elements';
+import ShoppingCartTotal from "../ShoppingCartTotal/shoppingCartTotal"
 
 class ShoppingCart extends Component {
     render(){
         return(
             <div>
-                {this.props.item.count}
                 <img src="https://www.materialui.co/materialIcons/action/shopping_cart_black_128x128.png" />
+                <h1> Shopping Cart </h1>
+                {this.props.item.count}
+                <ul>
+                    {console.log(this.props.shoppingCart)}
+                    {this.props.shoppingCart.map((cartItem, i) => {
+                        return (
+                            <li key={i}>{cartItem.title} : {cartItem.price}</li>
+                        )
+                    })}
+                </ul>
+                <ShoppingCartTotal totalPrice={this.props.totalPrice} />
                 <button
-                    // onClick = {this.handleReset}
-                    // className="btn btn-primary btn-sm m-2"
+                    onClick = {this.handleReset}
+                    className="btn btn-primary btn-sm m-2"
                     > 
                     Reset
                 </button>
