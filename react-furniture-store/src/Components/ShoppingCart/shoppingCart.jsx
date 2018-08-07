@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx"
 import {Elements, StripeProvider} from 'react-stripe-elements';
+import ShoppingCartTotal from "../ShoppingCartTotal/shoppingCartTotal"
 
 class ShoppingCart extends Component {
     render(){
@@ -13,11 +14,11 @@ class ShoppingCart extends Component {
                     {console.log(this.props.shoppingCart)}
                     {this.props.shoppingCart.map((cartItem, i) => {
                         return (
-                            <li key={i}>{cartItem.title}</li>
+                            <li key={i}>{cartItem.title} : {cartItem.price}</li>
                         )
                     })}
                 </ul>
-                
+                <ShoppingCartTotal totalPrice={this.props.totalPrice} />
                 <button
                     onClick = {this.handleReset}
                     className="btn btn-primary btn-sm m-2"

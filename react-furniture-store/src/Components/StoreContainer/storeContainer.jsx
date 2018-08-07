@@ -10,7 +10,8 @@ class StoreContainer extends Component {
         super(),
         this.state = {
             items: [],
-            shoppingCart: []
+            shoppingCart: [],
+            totalPrice: 0
         }
     };
     componentDidMount(){
@@ -82,15 +83,27 @@ class StoreContainer extends Component {
         this.setState({shoppingCart : newCartArray});  
     };
     handleItemClick = (item) => {
-        this.handleIncrement(item);
+        // this.handleIncrement(item);
         this.addToCart(item);
+        this.calculateTotal();
+    }
+    calculateTotal = () => {
+        console.log("calculate total")
+        let total = 0
+        this.state.shoppingCart.map(item => {
+            total += item.price
+            return total
+        })
+        this.setState({totalPrice : total})
+        console.log(total)
+        console.log(this.state.totalPrice)
     }
     render(){
         return(
             <div>
                 <h1> Store Container </h1>
                 <Title />
-                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} onReset = {this.state.handleReset}
+                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalPrice={this.state.totalPrice} onReset = {this.state.handleReset}
                 onDelete = {this.state.handleDelete}     
                 />
                 
@@ -100,8 +113,10 @@ class StoreContainer extends Component {
 
                 <ItemCardContainer 
                     item={this.state.items}
-                    onIncrement={this.handleIncrement}
-                    addToCart={this.addToCart}
+                    // onIncrement={this.handleIncrement}
+                    // addToCart={this.addToCart}
+                    // calculateTotal={this.calculateTotal}
+                    handleItemClick={this.handleItemClick}
                 />
 
                 <CreateItem addItem={this.addItem}/>

@@ -11,8 +11,9 @@ class ItemCardContainer extends Component {
                 <ItemCard 
                     key={item.id}
                     item={item}
-                    onIncrement={this.props.onIncrement}
-                    addToCart={this.props.addToCart}
+                    // onIncrement={this.props.onIncrement}
+                    // addToCart={this.props.addToCart}
+                    handleItemClick={this.props.handleItemClick}
                 />  
                 )}
                
