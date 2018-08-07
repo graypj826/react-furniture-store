@@ -16,7 +16,7 @@ const App = () => {
   return (
     <main>
       <Switch>
-        <Route exact path='/shop' component={ StoreContainer } />
+        <Route exact path='/home' component={ StoreContainer } />
         <Route exact path='/admin' component= { ItemContainer } />
         <Route component={ My404 } />
       </Switch>
