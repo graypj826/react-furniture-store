@@ -3,7 +3,6 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
-import CreateItem from "../CreateItem/CreateItem";
 
 class StoreContainer extends Component {
     constructor () {
@@ -119,7 +118,6 @@ class StoreContainer extends Component {
                     handleItemClick={this.handleItemClick}
                 />
 
-                <CreateItem addItem={this.addItem}/>
                 
             </div>
         )   

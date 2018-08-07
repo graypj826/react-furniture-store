@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import StoreContainer from "./Components/StoreContainer/storeContainer.jsx"
+import ItemContainer from './Admin/ItemContainer/itemContainer.jsx';
 
 class App extends Component {
   render() {
@@ -9,6 +9,7 @@ class App extends Component {
       <div className="App">
         <React.Fragment>
           <StoreContainer />
+          <ItemContainer />
         </React.Fragment>
       </div>
     );
