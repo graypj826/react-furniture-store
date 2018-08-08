@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import App from '../App';
-import StoreContainer from '../Components/StoreContainer/storeContainer';
+import ItemContainer from '../Admin/ItemContainer/itemContainer';
 
-class Home extends Component {
+class Admin extends Component {
   // calls the login method in authentication service
   login = () => {
     this.props.auth.login();
@@ -28,7 +28,7 @@ class Home extends Component {
                 Log Out
               </a>.
             </h5>
-            <StoreContainer />
+            <ItemContainer />
           </div>
         }
         {
@@ -52,4 +52,4 @@ class Home extends Component {
     }
   }
 
-  export default Home;
+  export default Admin;
