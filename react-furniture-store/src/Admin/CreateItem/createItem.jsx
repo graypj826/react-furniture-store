@@ -17,7 +17,7 @@ class CreateItem extends Component {
         this.setState({[e.currentTarget.name]: e.currentTarget.value});
     }
     createItem = async (item, e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         try {
             const createItem = await fetch('http://localhost:9000/api/v1/items', {
@@ -39,7 +39,7 @@ class CreateItem extends Component {
         return (
             <div>
                 <h1>Create Item</h1>
-                <form onSubmit={this.createItem(this,this.state)}>
+                <form onSubmit={this.createItem.bind(null,this.state)}>
                     <label>
                         Item Title:
                         <input type="text" name="title" onChange={this.updateItem}/>

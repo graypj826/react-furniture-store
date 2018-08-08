@@ -1,9 +1,10 @@
 import React, { Component } from "react"
+import './style.css';
 
 class Title extends Component {
     render(){
         return(
-            <h1> Title! </h1>
+            <h1 className="title-component"> Title! </h1>
         )
     }
 }

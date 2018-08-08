@@ -3,6 +3,7 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
+import './style.css';
 
 class StoreContainer extends Component {
     constructor () {
@@ -132,9 +133,9 @@ class StoreContainer extends Component {
     render(){
         return(
             <div>
-                <div className = "storeContainer">
-                    <Title className="TitleComponent"/>
-                    <ShoppingCart className="ShoppingCartComponent"
+                <div className = "store-container">
+                    <Title className="title-component"/>
+                    <ShoppingCart className="shopping-cart-component"
                     item={this.state.items} 
                     shoppingCart={this.state.shoppingCart} 
                     totalCost={this.state.totalCost} onReset = {this.state.handleReset}
@@ -143,11 +144,11 @@ class StoreContainer extends Component {
                     submit = {this.submit}    
                     />
                     
-                    <ItemCarousel className="ItemCarouselComponent" 
+                    <ItemCarousel className="item-carousel-component" 
                         item={this.state.items}
                     />
 
-                    <ItemCardContainer className="ItemCardContainerComponent" 
+                    <ItemCardContainer className="item-card-container-component" 
                         item={this.state.items}
                         // onIncrement={this.handleIncrement}
                         // addToCart={this.addToCart}
