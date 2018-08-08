@@ -9,6 +9,9 @@ const ItemList = (props) => {
                     <span>{item.title}</span>
                     <small>{item.description}</small>
                     <small>{item.price}</small>
+                    <img src={item.photo1URL}/>
+                    <img src={item.photo2URL}/>
+                    <img src={item.photo3URL}/>
                     <button onClick={props.deleteItem.bind(null, item._id)}>Delete</button>
                     <button onClick={props.showModal.bind(null, item._id)}>Edit</button>
                 </li>

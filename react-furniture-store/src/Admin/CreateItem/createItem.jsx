@@ -8,6 +8,9 @@ class CreateItem extends Component {
             title: '',
             description: '',
             price: 0,
+            photo1URL: '',
+            photo2URL: '',
+            photo3URL: '',
         }
     }
     updateItem = (e) => {
@@ -48,6 +51,18 @@ class CreateItem extends Component {
                     <label>
                         Item Price:
                         <input type="text" name="price" onChange={this.updateItem}/>
+                    </label>
+                    <label>
+                        Photo 1 URL:
+                        <input type="text" name="photo1URL" onChange={this.updateItem}/>
+                    </label>
+                    <label>
+                        Photo 2 URL:
+                        <input type="text" name="photo2URL" onChange={this.updateItem}/>
+                    </label>
+                    <label>
+                        Photo 3 URL:
+                        <input type="text" name="photo3URL" onChange={this.updateItem}/>
                     </label>
                     <input type="Submit"/>
                 </form>
