@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import App from '../App';
 import ItemContainer from '../Admin/ItemContainer/itemContainer';
 
 class Admin extends Component {
