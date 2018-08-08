@@ -6,7 +6,7 @@ class ItemCarousel extends Component {
             <div> 
                 <h1> Item Carousel </h1>
                 {this.props.item.map((item, i) => {
-                    return <img src={item.img} key={item.id}/>
+                    return <img src={item.img} key={item._id}/>
                 })
                 }
             </div>

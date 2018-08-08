@@ -10,7 +10,8 @@ class StoreContainer extends Component {
         this.state = {
             items: [],
             shoppingCart: [],
-            totalCost: 0
+            totalCost: 0,
+            purchaseComplete: false,
         }
     };
     componentDidMount(){
@@ -24,32 +25,33 @@ class StoreContainer extends Component {
     };
     getItems = async () => {
         const items = await fetch('http://localhost:9000/api/v1/items', {
+            credentials: 'include',
             method: "GET" 
         });
         const itemsJson = await items.json();
         console.log(itemsJson);
         return itemsJson;
     };
-    addItem = async (item, e) => {
-        e.preventDefault();
+    // addItem = async (item, e) => {
+    //     e.preventDefault();
 
-        try {
-            const createItem = await fetch('http://localhost:9000/api/v1/items', {
-                method: 'POST',
-                credentials: 'include',
-                body: JSON.stringify(item),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+    //     try {
+    //         const createItem = await fetch('http://localhost:9000/api/v1/items', {
+    //             method: 'POST',
+    //             credentials: 'include',
+    //             body: JSON.stringify(item),
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
 
-            const parsedResponse = await createItem.json();
+    //         const parsedResponse = await createItem.json();
 
-            this.setState({items: [...this.state.items, parsedResponse.data]});
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    //         this.setState({items: [...this.state.items, parsedResponse.data]});
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
     handleIncrement = (item) => {
         const newItemsArray = [...this.state.items]
         const index = newItemsArray.indexOf(item);
@@ -115,6 +117,18 @@ class StoreContainer extends Component {
             console.log(err, "error");
         }
     };
+    async submit(ev) {
+        console.log("checkout form submitted")
+        let {token} = await this.props.stripe.createToken({name: "Name"});
+        let response = await fetch("http://localhost:9000/charge", {
+          method: "POST",
+          headers: {"Content-Type": "text/plain"},
+          body: token.id
+        });
+      
+        if (response.ok) this.setState({purchaseComplete: true});
+        console.log("Submit was completed")
+    }
     render(){
         return(
             <div>
@@ -122,7 +136,8 @@ class StoreContainer extends Component {
                 <Title />
                 <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalCost={this.state.totalCost} onReset = {this.state.handleReset}
                 onDelete = {this.state.handleDelete}
-                checkOut = {this.checkOut}    
+                checkOut = {this.checkOut}
+                submit = {this.submit}    
                 />
                 
                 <ItemCarousel 
