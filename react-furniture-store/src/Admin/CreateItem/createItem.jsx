@@ -13,12 +13,30 @@ class CreateItem extends Component {
     updateItem = (e) => {
         this.setState({[e.currentTarget.name]: e.currentTarget.value});
     }
+    createItem = async (item, e) => {
+        // e.preventDefault();
+
+        try {
+            const createItem = await fetch('http://localhost:9000/api/v1/items', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(item),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const parsedResponse = await createItem.json();
+
+            this.setState({items: [...this.state.items, parsedResponse.data]});
+        } catch (err) {
+            console.log(err);
+        }
+    };
     render() {
-        console.log(this.props, ' this is props');
         return (
             <div>
                 <h1>Create Item</h1>
-                <form onSubmit={this.props.addItem.bind(this, this.state)}>
+                <form onSubmit={this.createItem(this,this.state)}>
                     <label>
                         Item Title:
                         <input type="text" name="title" onChange={this.updateItem}/>

@@ -1,6 +1,8 @@
-import React, { Component } from "react"
-import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx"
+import React, { Component } from "react";
+
 import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx"
+
 import ShoppingCartTotal from "../ShoppingCartTotal/shoppingCartTotal"
 
 class ShoppingCart extends Component {
@@ -31,15 +33,18 @@ class ShoppingCart extends Component {
                         checkout
                 </button> 
                 <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
-                <div className="example">
-                <h1>React Stripe Elements Example</h1>
-                <Elements>
-                    <CheckoutForm totalCost={this.props.totalCost}/>
-                </Elements>
-                </div>
-            </StripeProvider>
+                    <div className="stripProvider">
+                        <h1>React Stripe Elements</h1>
+                        <Elements>
+                            <CheckoutForm 
+                            totalCost={this.props.totalCost}
+                            submit = {this.props.submit}    
+                            />
+                        </Elements>
+                    </div>
+                </StripeProvider>
           </div>
-        )
+        );
     }
 }
 

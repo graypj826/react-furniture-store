@@ -9,7 +9,7 @@ class ItemCardContainer extends Component {
                  <h1> ItemCardContainer </h1>
                  {this.props.item.map(item => 
                 <ItemCard 
-                    key={item.id}
+                    key={item._id}
                     item={item}
                     // onIncrement={this.props.onIncrement}
                     // addToCart={this.props.addToCart}
