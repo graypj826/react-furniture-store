@@ -18,21 +18,23 @@ class ShoppingCart extends Component {
                         )
                     })}
                 </ul>
-                <ShoppingCartTotal totalPrice={this.props.totalPrice} />
+                <ShoppingCartTotal totalCost={this.props.totalCost} />
                 <button
                     onClick = {this.handleReset}
                     className="btn btn-primary btn-sm m-2"
                     > 
                     Reset
                 </button>
-                <button> 
-                    checkout
+                <button 
+                    onClick={this.props.checkOut.bind(this, this.props.totalCost)}
+                    > 
+                        checkout
                 </button> 
                 <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
                 <div className="example">
                 <h1>React Stripe Elements Example</h1>
                 <Elements>
-                    <CheckoutForm />
+                    <CheckoutForm totalCost={this.props.totalCost}/>
                 </Elements>
                 </div>
             </StripeProvider>
