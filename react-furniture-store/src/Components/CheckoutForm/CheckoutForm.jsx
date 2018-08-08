@@ -11,6 +11,7 @@ class CheckoutForm extends Component {
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
     let response = await fetch("/charge", {
+      //the fetch request will go to our server...
       method: "POST",
       headers: {"Content-Type": "text/plain"},
       body: token.id
@@ -26,7 +27,7 @@ class CheckoutForm extends Component {
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <button onClick={this.submit}>Pay {this.props.totalCost}</button>
       </div>
     );
   }

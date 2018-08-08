@@ -10,7 +10,7 @@ class StoreContainer extends Component {
         this.state = {
             items: [],
             shoppingCart: [],
-            totalPrice: 0
+            totalCost: 0
         }
     };
     componentDidMount(){
@@ -73,37 +73,56 @@ class StoreContainer extends Component {
      //Patrick ADD here--------------------------------
      addToCart = (item) => {
         console.log("event added item to cart")
-        console.log(item)
         const newCartArray = [...this.state.shoppingCart]
         const newCartItem = {...item};
-        console.log(newCartItem)
         newCartArray.push(newCartItem)
-        console.log({newCartArray})
         this.setState({shoppingCart : newCartArray});  
     };
-    handleItemClick = (item) => {
-        // this.handleIncrement(item);
-        this.addToCart(item);
+    handleItemClick = async (item) => {
+    
+        await this.addToCart(item);
         this.calculateTotal();
     }
     calculateTotal = () => {
-        console.log("calculate total")
         let total = 0
         this.state.shoppingCart.map(item => {
             total += item.price
+            console.log(total)
             return total
         })
-        this.setState({totalPrice : total})
-        console.log(total)
-        console.log(this.state.totalPrice)
+        this.setState({totalCost : total})
+        
     }
+    checkOut = async (checkout, e) => {
+        console.log("checkout called")
+        console.log(checkout)
+        e.preventDefault();
+        try {
+            const createCheckout = await fetch('http://localhost:9000/checkout/', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(checkout),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            const parsedResponse = await createCheckout.json();
+        
+            console.log(parsedResponse);
+    
+        } catch (err) {
+            console.log(err, "error");
+        }
+    };
     render(){
         return(
             <div>
                 <h1> Store Container </h1>
                 <Title />
-                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalPrice={this.state.totalPrice} onReset = {this.state.handleReset}
-                onDelete = {this.state.handleDelete}     
+                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalCost={this.state.totalCost} onReset = {this.state.handleReset}
+                onDelete = {this.state.handleDelete}
+                checkOut = {this.checkOut}    
                 />
                 
                 <ItemCarousel 
