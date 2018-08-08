@@ -132,27 +132,29 @@ class StoreContainer extends Component {
     render(){
         return(
             <div>
-                <h1> Store Container </h1>
-                <Title />
-                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalCost={this.state.totalCost} onReset = {this.state.handleReset}
-                onDelete = {this.state.handleDelete}
-                checkOut = {this.checkOut}
-                submit = {this.submit}    
-                />
-                
-                <ItemCarousel 
-                    item={this.state.items}
-                />
+                <div className = "storeContainer">
+                    <Title className="TitleComponent"/>
+                    <ShoppingCart className="ShoppingCartComponent"
+                    item={this.state.items} 
+                    shoppingCart={this.state.shoppingCart} 
+                    totalCost={this.state.totalCost} onReset = {this.state.handleReset}
+                    onDelete = {this.state.handleDelete}
+                    checkOut = {this.checkOut}
+                    submit = {this.submit}    
+                    />
+                    
+                    <ItemCarousel className="ItemCarouselComponent" 
+                        item={this.state.items}
+                    />
 
-                <ItemCardContainer 
-                    item={this.state.items}
-                    // onIncrement={this.handleIncrement}
-                    // addToCart={this.addToCart}
-                    // calculateTotal={this.calculateTotal}
-                    handleItemClick={this.handleItemClick}
-                />
-
-                
+                    <ItemCardContainer className="ItemCardContainerComponent" 
+                        item={this.state.items}
+                        // onIncrement={this.handleIncrement}
+                        // addToCart={this.addToCart}
+                        // calculateTotal={this.calculateTotal}
+                        handleItemClick={this.handleItemClick}
+                    />
+                </div>
             </div>
         )   
     }
