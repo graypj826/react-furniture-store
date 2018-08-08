@@ -3,6 +3,7 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
+import { Link } from 'react-router-dom';
 
 class StoreContainer extends Component {
     constructor () {
@@ -129,7 +130,21 @@ class StoreContainer extends Component {
         if (response.ok) this.setState({purchaseComplete: true});
         console.log("Submit was completed")
     }
+    userHasScopes = (scopes) => {
+        const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+        return scopes.every(scope => grantedScopes.includes(scope));
+    }
+
+    isAuthenticated = () => {
+    // Check whether the current time is past the
+    // access token's expiry time
+        let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+        return new Date().getTime() < expiresAt;
+    }
+
     render(){
+        const isAuthenticated = this.isAuthenticated;
+        const userHasScopes = this.userHasScopes;
         return(
             <div>
                 <h1> Store Container </h1>
@@ -151,6 +166,12 @@ class StoreContainer extends Component {
                     // calculateTotal={this.calculateTotal}
                     handleItemClick={this.handleItemClick}
                 />
+
+                {
+                    isAuthenticated() && userHasScopes(['write:messages']) && (
+                        <Link to='/admin'>Manage Inventory</Link>
+                    )
+                }
 
                 
             </div>
