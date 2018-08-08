@@ -33,26 +33,6 @@ class StoreContainer extends Component {
         console.log(itemsJson);
         return itemsJson;
     };
-    // addItem = async (item, e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const createItem = await fetch('http://localhost:9000/api/v1/items', {
-    //             method: 'POST',
-    //             credentials: 'include',
-    //             body: JSON.stringify(item),
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-
-    //         const parsedResponse = await createItem.json();
-
-    //         this.setState({items: [...this.state.items, parsedResponse.data]});
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
     handleIncrement = (item) => {
         const newItemsArray = [...this.state.items]
         const index = newItemsArray.indexOf(item);
