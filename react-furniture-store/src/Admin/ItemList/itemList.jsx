@@ -1,31 +1,35 @@
 import React from 'react';
-// import { Button } from 'reactstrap';
-
+import { Col, Row, Container, Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button, CardDeck } from 'reactstrap';
+import './style.css';
+  
 const ItemList = (props) => {
 
     const itemList = props.items.map((item, i) => {
         return (
-            <div>
-                <li key={item._id}>
-                    <span>{item.title}</span>
-                    <small>{item.description}</small>
-                    <small>{item.price}</small>
-                    <img src={item.photo1URL}/>
-                    <img src={item.photo2URL}/>
-                    <img src={item.photo3URL}/>
-                    <button onClick={props.deleteItem.bind(null, item._id)}>Delete</button>
-                    <button onClick={props.showModal.bind(null, item._id)}>Edit</button>
-                    {/* <Button onClick={props.deleteItem.bind(null, item._id)}>Delete</Button>
-                    <Button onClick={props.showModal.bind(null, item._id)}>Edit</Button> */}
-                </li>
-            </div>
+            <Col sm={3}>
+                <Card key={i} className="card">
+                    <CardImg top width="100%" src={item.photo1URL} alt="Card image cap" />
+                    <CardBody>
+                        <CardTitle>{item.title}</CardTitle>
+                        <CardSubtitle>${item.price}</CardSubtitle>
+                        <CardText>{item.description}</CardText>
+                        <Button onClick={props.showModal.bind(null, item._id)}>Edit</Button>
+                        <Button onClick={props.deleteItem.bind(null, item._id)}>Delete</Button>
+                    </CardBody>
+                </Card>
+            </Col>
         )
     });
 
     return (
-        <ul>
-            {itemList}
-        </ul>
+        <Container>
+            <Row>
+                <CardDeck>
+                    {itemList}
+                </CardDeck>
+            </Row>
+        </Container>
     )
 };
 
