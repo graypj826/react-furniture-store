@@ -126,8 +126,6 @@ class ItemContainer extends Component {
     render(){
         return(
             <div>
-                <h1> Item Container </h1>
-
                 <CreateItem addItem={this.addItem}/>
                 <ItemList items={this.state.items} deleteItem={this.deleteItem} showModal={this.showModal}/>
 

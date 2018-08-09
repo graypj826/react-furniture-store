@@ -1,28 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Container, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const EditItem = (props) =>  {
 
-  return (
-    <div>
-      <h4> Edit Item</h4>
-      <form onSubmit={props.closeAndEdit}>
-        <label>
-          Edit Title:
-          <input type="text" name="title" onChange={props.handleFormChange} value={props.itemToEdit.title}/>
-        </label>
-        <label>
-          Edit Description:
-          <input type="text" name="description" onChange={props.handleFormChange} value={props.itemToEdit.description}/>
-        </label>
-        <label>
-          Edit Price:
-          <input type="text" name="price" onChange={props.handleFormChange} value={props.itemToEdit.price}/>
-        </label>
-        <input type='Submit'/>
-      </form>
-    </div>
-
+    return (
+        <Container>
+            <h2>Edit Item</h2>
+            <Form onSubmit={props.closeAndEdit}>
+                <FormGroup row>
+                    <Label for="itemTitle" sm={3}>Title</Label>
+                    <Col sm={9}>
+                        <Input type="text" name="title" placeholder="item title" onChange={props.handleFormChange} value={props.itemToEdit.title} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="itemDescription" sm={3}>Description</Label>
+                    <Col sm={9}>
+                        <Input type="text" name="description" placeholder="item description" onChange={props.handleFormChange} value={props.itemToEdit.description} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="itemPrice" sm={3}>Price $</Label>
+                    <Col sm={9}>
+                        <Input type="number" name="price" placeholder="item price" onChange={props.handleFormChange} value={props.itemToEdit.price} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="photo1URL" sm={3}>Photo 1</Label>
+                    <Col sm={9}>
+                        <Input type="url" name="photo1URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo1url} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="photo2URL" sm={3}>Photo 2</Label>
+                    <Col sm={9}>
+                        <Input type="url" name="photo2URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo2url} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="photo3URL" sm={3}>Photo 3</Label>
+                    <Col sm={9}>
+                        <Input type="url" name="photo3URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo3url} />
+                    </Col>
+                </FormGroup>
+                <Button type="Submit">Submit</Button>
+            </Form>
+        </Container>
     )
-  }
+}
 
 export default EditItem;
