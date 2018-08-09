@@ -28,19 +28,19 @@ const EditItem = (props) =>  {
                 <FormGroup row>
                     <Label for="photo1URL" sm={3}>Photo 1</Label>
                     <Col sm={9}>
-                        <Input type="url" name="photo1URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo1url} />
+                        <Input type="url" name="photo1URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo1URL} />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
                     <Label for="photo2URL" sm={3}>Photo 2</Label>
                     <Col sm={9}>
-                        <Input type="url" name="photo2URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo2url} />
+                        <Input type="url" name="photo2URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo2URL} />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
                     <Label for="photo3URL" sm={3}>Photo 3</Label>
                     <Col sm={9}>
-                        <Input type="url" name="photo3URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo3url} />
+                        <Input type="url" name="photo3URL" placeholder="image URL" onChange={props.handleFormChange} value={props.itemToEdit.photo3URL} />
                     </Col>
                 </FormGroup>
                 <Button type="Submit">Submit</Button>
