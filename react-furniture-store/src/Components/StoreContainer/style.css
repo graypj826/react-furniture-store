@@ -13,3 +13,7 @@
 .space{
     height: 50px
 }
+
+.shopping-cart-button{
+    max-width: 100px;
+}

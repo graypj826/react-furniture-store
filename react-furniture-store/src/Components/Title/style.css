@@ -1,8 +1,11 @@
 .title-component {
-    margin: 0;
+    margin: 2px auto;
     padding: 0;
     background-color: #93004E;
     font-family: 'Raleway', sans-serif;
     text-align: center;
     color: #D9F296;
+    border: 2px solid #D9F296;
+
+   
   }

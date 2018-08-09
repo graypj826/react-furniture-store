@@ -74,7 +74,7 @@ import {
             key={item._id}
           >
             <img src={item.photo1URL} alt={item.description} />
-            <CarouselCaption captionText={item.title} captionHeader={item.title} />
+            {/* <CarouselCaption captionText={item.title} captionHeader={item.title} /> */}
           </CarouselItem>
         );
       });

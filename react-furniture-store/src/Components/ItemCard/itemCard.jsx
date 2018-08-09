@@ -33,12 +33,7 @@ class ItemCard extends Component {
     render(){
         return(
             <div className="item-card-component">
-                
-                   
-                     
-                    
-                        <div className="item-card-component-modal-div">
-                                
+                <div className="item-card-component-modal-div">
                                 <Button 
                                     onClick={this.toggle} 
                                     className="item-card-modal-button">
@@ -60,10 +55,10 @@ class ItemCard extends Component {
                                     
                                     <p> {this.props.item.description}</p>
             
-                                    <p> {this.props.item.price} </p>
+                                    <p> ${this.props.item.price} </p>
             
                         
-                                    {/* <button onClick={this.props.handleItemClick.bind(null,this.props.item)}> + </button> */}
+                                    {/* <button on Click={this.props.handleItemClick.bind(null,this.props.item)}> + </button> */}
                                 
 
                                 </ModalBody>

@@ -35,11 +35,11 @@ class ShoppingCart extends Component {
       }    
     render(){
             return (
-              <Container fluid> 
-                <Row>
-                    <Col xs="3">
-                        <Button onClick={this.toggle} className="shopping-cart-modal-button"><img src="https://cdn3.iconfinder.com/data/icons/ikooni-flat-online-shopping/128/shopping-14-128.png"/> : {this.props.shoppingCart.length}</Button>
-                    </Col>
+              <Container fluid className="shopping-cart-container"> 
+                
+                    
+                        <Button onClick={this.toggle} className="shopping-cart-modal-button"><img src="http://www.iconhot.com/icon/png/devine/256/cart-2.png"/> : {this.props.shoppingCart.length}   </Button>
+                    
                         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}><h1> Shopping Cart </h1></ModalHeader>
                         <ModalBody className = "shopping-cart-modal">
@@ -85,7 +85,7 @@ class ShoppingCart extends Component {
                         </ModalFooter>
                         </Modal>
                     
-                </Row>
+                
             </Container>
             );
           }

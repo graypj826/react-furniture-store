@@ -135,10 +135,10 @@ class StoreContainer extends Component {
                 <Container fluid>
                     <div className = "store-container-component">
                         <Row>
-                            <Col xs="8">
+                            <Col sm="6">
                                 <Title className = ""/>
                             </Col>
-                            <Col xs="2">
+                            <Col >
                                 <ShoppingCart 
                                     item={this.state.items} 
                                     shoppingCart={this.state.shoppingCart} 

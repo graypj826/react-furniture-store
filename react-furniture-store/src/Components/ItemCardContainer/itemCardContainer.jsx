@@ -46,8 +46,9 @@ class ItemCardContainer extends Component {
                             
                             {this.props.item.map(item => {   
                                 return(
-                                    <Col>
+                                    <Col className="item-card-col">
                                         <ItemCard 
+                                        
                                         key={item._id}
                                         item={item}
                                         // onIncrement={this.props.onIncrement}

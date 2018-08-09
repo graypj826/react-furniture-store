@@ -8,8 +8,20 @@
   } */
 
 .shopping-cart-modal-button{
-  margin: 15% auto;
+  /* margin: 15% auto; */
   background-color: #FF9933 !important;
   font-family: 'Raleway', sans-serif;
+  max-height: 100px;
+  max-width: 100px; 
+  color: #93004E !important;
+  
+}
 
+.shopping-cart-modal-button img{
+  max-height: 50px;
+  max-width: 40px 
+}
+
+.shopping-cart-container{
+  text-align: center
 }
