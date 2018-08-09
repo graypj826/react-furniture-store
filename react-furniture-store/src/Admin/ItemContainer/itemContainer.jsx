@@ -101,6 +101,9 @@ class ItemContainer extends Component {
                     item.title = parsedResponse.data.title;
                     item.description = parsedResponse.data.description;
                     item.price = parsedResponse.data.price;
+                    item.photo1URL = parsedResponse.data.photo1URL;
+                    item.photo2URL = parsedResponse.data.photo2URL;
+                    item.photo3URL = parsedResponse.data.photo3URL;
                 }
                 return item;
             });
