@@ -4,6 +4,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx"
 
 import ShoppingCartTotal from "../ShoppingCartTotal/shoppingCartTotal"
+import './style.css';
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -23,12 +24,11 @@ class ShoppingCart extends Component {
       }    
     render(){
             return (
-              <div>
-                <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+              <div className="shopping-cart-component">
+                <Button color="primary" onClick={this.toggle} className="shopping-cart-modal-button">Shopping Cart :{this.props.totalCost}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                  <ModalBody>
-                    
+                  <ModalBody className = "shopping-cart-modal">
                     
                     <div>
                         <img src="https://www.materialui.co/materialIcons/action/shopping_cart_black_128x128.png" />

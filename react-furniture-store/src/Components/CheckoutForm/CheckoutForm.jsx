@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
+import './style.css';
 
 class CheckoutForm extends Component {
   // constructor(props) {
@@ -23,7 +24,7 @@ class CheckoutForm extends Component {
     if (this.props.purchaseComplete) return <h1>Purchase Complete</h1>;
   
     return (
-      <div className="checkout">
+      <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
         <button onClick={this.props.submit.bind(this)}>Pay : {this.props.totalCost}</button>

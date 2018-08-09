@@ -1,0 +1,27 @@
+/* *{
+  font-family: 'Raleway', sans-serif !important;
+}
+
+  .item-card-modal-button{
+    text-align: center;
+    background-color: #BACFE4 !important
+  } */
+
+
+  .item-card-modal-button img{
+    height: 200px;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+  }
+  
+  .modal-content img{
+    height: 80%;
+    width: 80%;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+  }
+  
+  /* .modal-header{
+    margin: 0 auto
+  } */

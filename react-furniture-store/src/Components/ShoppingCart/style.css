@@ -1,0 +1,14 @@
+.shopping-cart-component{
+    margin: 0;
+    padding: 0;
+    border: 1px solid green;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+  
+  }
+
+.shopping-cart-modal-button{
+  background-color: #FF9933 !important;
+  font-family: 'Raleway', sans-serif;
+
+}

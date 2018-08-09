@@ -4,7 +4,8 @@ import './index.css';
 import Routes from './Auth/routes';
 import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-//import react strap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 ReactDOM.render(

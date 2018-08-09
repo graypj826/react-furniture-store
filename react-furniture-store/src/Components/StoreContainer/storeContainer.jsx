@@ -4,6 +4,8 @@ import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
 import './style.css';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 
 class StoreContainer extends Component {
     constructor () {
@@ -33,26 +35,6 @@ class StoreContainer extends Component {
         console.log(itemsJson);
         return itemsJson;
     };
-    // addItem = async (item, e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const createItem = await fetch('http://localhost:9000/api/v1/items', {
-    //             method: 'POST',
-    //             credentials: 'include',
-    //             body: JSON.stringify(item),
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-
-    //         const parsedResponse = await createItem.json();
-
-    //         this.setState({items: [...this.state.items, parsedResponse.data]});
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
     handleIncrement = (item) => {
         const newItemsArray = [...this.state.items]
         const index = newItemsArray.indexOf(item);
@@ -130,32 +112,63 @@ class StoreContainer extends Component {
         if (response.ok) this.setState({purchaseComplete: true});
         console.log("Submit was completed")
     }
+    userHasScopes = (scopes) => {
+        const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+        return scopes.every(scope => grantedScopes.includes(scope));
+    }
+
+    isAuthenticated = () => {
+    // Check whether the current time is past the
+    // access token's expiry time
+        let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+        return new Date().getTime() < expiresAt;
+    }
+
     render(){
+        const isAuthenticated = this.isAuthenticated;
+        const userHasScopes = this.userHasScopes;
         return(
             <div>
-                <div className = "store-container">
-                    <Title className="title-component"/>
-                    <ShoppingCart className="shopping-cart-component"
-                    item={this.state.items} 
-                    shoppingCart={this.state.shoppingCart} 
-                    totalCost={this.state.totalCost} onReset = {this.state.handleReset}
-                    onDelete = {this.state.handleDelete}
-                    checkOut = {this.checkOut}
-                    submit = {this.submit}    
-                    />
-                    
-                    <ItemCarousel className="item-carousel-component" 
-                        item={this.state.items}
-                    />
-
-                    <ItemCardContainer className="item-card-container-component" 
-                        item={this.state.items}
-                        // onIncrement={this.handleIncrement}
-                        // addToCart={this.addToCart}
-                        // calculateTotal={this.calculateTotal}
-                        handleItemClick={this.handleItemClick}
-                    />
-                </div>
+                <Container fluid>
+                    <div className = "store-container-component">
+                        <Row>
+                            <Col>
+                                <Title className = ""/>
+                            </Col>
+                            <Col>
+                                <ShoppingCart 
+                                    item={this.state.items} 
+                                    shoppingCart={this.state.shoppingCart} 
+                                    totalCost={this.state.totalCost} onReset = {this.state.handleReset}
+                                    onDelete = {this.state.handleDelete}
+                                    checkOut = {this.checkOut}
+                                    submit = {this.submit}    
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <ItemCarousel 
+                                    item={this.state.items}
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <ItemCardContainer 
+                                item={this.state.items}
+                                // onIncrement={this.handleIncrement}
+                                // addToCart={this.addToCart}
+                                // calculateTotal={this.calculateTotal}
+                                handleItemClick={this.handleItemClick}
+                            />
+                        </Row>
+                        {
+                            isAuthenticated() && userHasScopes(['write:messages']) && (
+                                <Link to='/admin'>Manage Inventory</Link>
+                            )
+                        }
+                    </div>
+                </Container>
             </div>
         )   
     }

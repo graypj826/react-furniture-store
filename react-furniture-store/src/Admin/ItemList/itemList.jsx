@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Button } from 'reactstrap';
 
 const ItemList = (props) => {
 
@@ -14,6 +15,8 @@ const ItemList = (props) => {
                     <img src={item.photo3URL}/>
                     <button onClick={props.deleteItem.bind(null, item._id)}>Delete</button>
                     <button onClick={props.showModal.bind(null, item._id)}>Edit</button>
+                    {/* <Button onClick={props.deleteItem.bind(null, item._id)}>Delete</Button>
+                    <Button onClick={props.showModal.bind(null, item._id)}>Edit</Button> */}
                 </li>
             </div>
         )
