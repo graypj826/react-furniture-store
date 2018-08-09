@@ -128,7 +128,6 @@ class StoreContainer extends Component {
         const isAuthenticated = this.isAuthenticated;
         const userHasScopes = this.userHasScopes;
         return(
-            <div>
                 <Container fluid>
                     <div className = "store-container-component">
                         <Row>
@@ -147,12 +146,16 @@ class StoreContainer extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
-                                <ItemCarousel 
-                                    item={this.state.items}
-                                />
-                            </Col>
+                           
+                                <Col>
+                                    <ItemCarousel 
+                                        item={this.state.items}
+                                    />
+                                </Col>
+                           
                         </Row>
+                        <div className="space">
+                        </div>
                         <Row>
                             <ItemCardContainer 
                                 item={this.state.items}
@@ -169,7 +172,7 @@ class StoreContainer extends Component {
                         }
                     </div>
                 </Container>
-            </div>
+           
         )   
     }
 }

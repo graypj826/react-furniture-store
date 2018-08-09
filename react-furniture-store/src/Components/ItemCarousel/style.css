@@ -1,7 +1,15 @@
-.item-carousel-component{
-    margin: 0;
-    padding: 0;
-    border: 1px solid green;
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-  }
+
+
+img {
+  margin: 0 auto;
+  width: 95%;
+  height: 95%;
+  max-height: 600px;
+}
+
+.carousel{
+ 
+  text-align: center;
+ 
+}
+

@@ -33,9 +33,9 @@ class ItemCard extends Component {
     render(){
         return(
             <div className="item-card-component">
-                {/* <Container>
+                <Container>
                    
-                    <Col xs="2"> */}
+                    <Col> 
                     
                         <div className="item-card-component-modal-div">
                                 
@@ -71,7 +71,7 @@ class ItemCard extends Component {
                                     <Button 
                                     color="primary" 
                                     
-                                    onClick={this.props.handleItemClick.bind(null,this.props.item)}
+                                    onClick={()=>{this.props.handleItemClick(this.props.item); this.toggle()}}
                                     >
                                     Add To Shopping Cart
                                     </Button>
@@ -80,9 +80,9 @@ class ItemCard extends Component {
                                 </Modal>
                             </div>                        
                     
-                    {/* </Col>
+                    </Col>
                
-            </Container> */}
+            </Container> 
         </div>
     )
     }

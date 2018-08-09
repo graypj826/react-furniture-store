@@ -36,9 +36,11 @@ class ItemCardContainer extends Component {
         return(
             <Container fluid>
                 
-                    <div className="item-card-container">
+         
                         <Row>
-                            <h1> ItemCardContainer </h1>
+                            <Col>
+                                <strong className="item-card-container-title"> ItemCardContainer </strong>
+                            </Col>
                         </Row>
                         <Row>
                             
@@ -57,8 +59,6 @@ class ItemCardContainer extends Component {
                             )}
                            
                         </Row>
-                    </div>
-                
              </Container>        
         )
     }
