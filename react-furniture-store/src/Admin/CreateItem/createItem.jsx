@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class CreateItem extends Component {
     constructor() {
@@ -18,36 +19,48 @@ class CreateItem extends Component {
     }
     render() {
         return (
-            <div>
-                <h1>Create Item</h1>
-                <form onSubmit={this.props.addItem.bind(this, this.state)}>
-                    <label>
-                        Item Title:
-                        <input type="text" name="title" onChange={this.updateItem}/>
-                    </label>
-                    <label>
-                        Item Description:
-                        <input type="text" name="description" onChange={this.updateItem}/>
-                    </label>
-                    <label>
-                        Item Price:
-                        <input type="text" name="price" onChange={this.updateItem}/>
-                    </label>
-                    <label>
-                        Photo 1 URL:
-                        <input type="text" name="photo1URL" onChange={this.updateItem}/>
-                    </label>
-                    <label>
-                        Photo 2 URL:
-                        <input type="text" name="photo2URL" onChange={this.updateItem}/>
-                    </label>
-                    <label>
-                        Photo 3 URL:
-                        <input type="text" name="photo3URL" onChange={this.updateItem}/>
-                    </label>
-                    <input type="Submit"/>
-                </form>
-            </div>
+            <Container>
+                <h2>Add an Item to Inventory</h2>
+                <Form onSubmit={this.props.addItem.bind(this, this.state)}>
+                    <FormGroup row>
+                        <Label for="itemTitle" sm={2}>Title</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="title" placeholder="item title" onChange={this.updateItem} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="itemDescription" sm={2}>Description</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="description" placeholder="item description" onChange={this.updateItem} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="itemPrice" sm={2}>Price $</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="price" placeholder="item price" onChange={this.updateItem} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="photo1URL" sm={2}>Photo 1 URL</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="photo1URL" placeholder="image URL" onChange={this.updateItem} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="photo2URL" sm={2}>Photo 2 URL</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="photo2URL" placeholder="image URL" onChange={this.updateItem} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="photo3URL" sm={2}>Photo 3 URL</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="photo3URL" placeholder="image URL" onChange={this.updateItem} />
+                        </Col>
+                    </FormGroup>
+                    <Button type="Submit">Submit</Button>
+                </Form>
+            </Container>
         )
     }
 }
