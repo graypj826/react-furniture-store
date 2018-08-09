@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreateItem from '../CreateItem/createItem.jsx';
 import ItemList from '../ItemList/itemList.jsx';
 import EditItem from '../EditItem/editItem.jsx';
+import ModalExample from '../EditModal/editModal';
 
 class ItemContainer extends Component {
     constructor () {
@@ -133,7 +134,7 @@ class ItemContainer extends Component {
                 <ItemList items={this.state.items} deleteItem={this.deleteItem} showModal={this.showModal}/>
 
                 {this.state.showEdit ? <EditItem closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} itemToEdit={this.state.itemToEdit}/> : null}
-                
+                <ModalExample/>
             </div>
         )   
     }
