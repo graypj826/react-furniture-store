@@ -1,13 +1,14 @@
 import React from 'react';
 import { Col, Row, Container, Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, CardDeck } from 'reactstrap';
+import './style.css';
   
 const ItemList = (props) => {
 
     const itemList = props.items.map((item, i) => {
         return (
             <Col sm={3}>
-                <Card key={i}>
+                <Card key={i} className="card">
                     <CardImg top width="100%" src={item.photo1URL} alt="Card image cap" />
                     <CardBody>
                         <CardTitle>{item.title}</CardTitle>

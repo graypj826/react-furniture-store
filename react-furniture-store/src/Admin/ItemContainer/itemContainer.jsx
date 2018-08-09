@@ -134,7 +134,6 @@ class ItemContainer extends Component {
                 <ItemList items={this.state.items} deleteItem={this.deleteItem} showModal={this.showModal}/>
 
                 {this.state.showEdit ? <EditItem closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} itemToEdit={this.state.itemToEdit}/> : null}
-                <ModalExample/>
             </div>
         )   
     }
