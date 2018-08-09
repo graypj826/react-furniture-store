@@ -27,7 +27,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={this.props.submit.bind(this)}>Pay : {this.props.totalCost}</button>
+        <button onClick={() => {this.props.submit.bind(this); this.props.clearCart(); this.props.toggle()}}>Pay : {this.props.totalCost}</button>
       </div>
     );
   }

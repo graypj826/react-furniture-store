@@ -7,7 +7,7 @@ class Title extends Component {
     render(){
         return(
             <Container fluid>
-                <h1 className="title-component"> Title! </h1>
+                <h1 className="title-component"> So You Think You Can Shop! </h1>
             </Container>    
         )
     }

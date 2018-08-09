@@ -123,6 +123,10 @@ class StoreContainer extends Component {
         let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
     }
+    clearCart = () =>{
+        this.setState({shoppingCart : []});
+        this.setState({totalCost: 0})
+    }
 
     render(){
         const isAuthenticated = this.isAuthenticated;
@@ -131,20 +135,22 @@ class StoreContainer extends Component {
                 <Container fluid>
                     <div className = "store-container-component">
                         <Row>
-                            <Col>
+                            <Col xs="8">
                                 <Title className = ""/>
                             </Col>
-                            <Col>
+                            <Col xs="2">
                                 <ShoppingCart 
                                     item={this.state.items} 
                                     shoppingCart={this.state.shoppingCart} 
                                     totalCost={this.state.totalCost} onReset = {this.state.handleReset}
                                     onDelete = {this.state.handleDelete}
                                     checkOut = {this.checkOut}
-                                    submit = {this.submit}    
+                                    submit = {this.submit}
+                                    clearCart = {this.clearCart}    
                                 />
                             </Col>
                         </Row>
+                        {/* <Row className="space"></Row> */}
                         <Row>
                            
                                 <Col>
@@ -154,8 +160,6 @@ class StoreContainer extends Component {
                                 </Col>
                            
                         </Row>
-                        <div className="space">
-                        </div>
                         <Row>
                             <ItemCardContainer 
                                 item={this.state.items}

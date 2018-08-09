@@ -33,9 +33,9 @@ class ItemCard extends Component {
     render(){
         return(
             <div className="item-card-component">
-                <Container>
+                
                    
-                    <Col> 
+                     
                     
                         <div className="item-card-component-modal-div">
                                 
@@ -80,9 +80,9 @@ class ItemCard extends Component {
                                 </Modal>
                             </div>                        
                     
-                    </Col>
+                    
                
-            </Container> 
+           
         </div>
     )
     }

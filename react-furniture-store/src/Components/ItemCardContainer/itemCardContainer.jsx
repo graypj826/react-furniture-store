@@ -37,9 +37,9 @@ class ItemCardContainer extends Component {
             <Container fluid>
                 
          
-                        <Row>
+                        <Row className="item-card-container-title">
                             <Col>
-                                <strong className="item-card-container-title"> ItemCardContainer </strong>
+                                <strong > ItemCardContainer </strong>
                             </Col>
                         </Row>
                         <Row>

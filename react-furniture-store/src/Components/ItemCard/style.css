@@ -13,6 +13,7 @@
     width: 100%;
     font-family: 'Raleway', sans-serif;
     text-align: center;
+    border: 2px solid black;
   }
   
   .modal-content img{
@@ -25,3 +26,8 @@
   /* .modal-header{
     margin: 0 auto
   } */
+
+  button{
+    background-color: #D8C86E !important;
+    color: black !important;
+  }

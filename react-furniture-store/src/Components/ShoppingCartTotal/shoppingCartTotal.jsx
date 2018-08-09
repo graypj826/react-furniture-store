@@ -5,8 +5,7 @@ class ShoppingCartTotal extends Component {
     render(){ 
         return(
             <div className="shopping-cart-total-component">
-                 <p> your shopping cart total : </p>
-                 {this.props.totalCost}
+                 <p> your cart totals: ${this.props.totalCost}</p>
                
             </div>
         )
