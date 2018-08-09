@@ -3,7 +3,9 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
+import './style.css';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 
 class StoreContainer extends Component {
     constructor () {
@@ -121,40 +123,60 @@ class StoreContainer extends Component {
         let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
     }
+    clearCart = () =>{
+        this.setState({shoppingCart : []});
+        this.setState({totalCost: 0})
+    }
 
     render(){
         const isAuthenticated = this.isAuthenticated;
         const userHasScopes = this.userHasScopes;
         return(
-            <div>
-                <h1> Store Container </h1>
-                <Title />
-                <ShoppingCart item={this.state.items} shoppingCart={this.state.shoppingCart} totalCost={this.state.totalCost} onReset = {this.state.handleReset}
-                onDelete = {this.state.handleDelete}
-                checkOut = {this.checkOut}
-                submit = {this.submit}    
-                />
-                
-                <ItemCarousel 
-                    item={this.state.items}
-                />
-
-                <ItemCardContainer 
-                    item={this.state.items}
-                    // onIncrement={this.handleIncrement}
-                    // addToCart={this.addToCart}
-                    // calculateTotal={this.calculateTotal}
-                    handleItemClick={this.handleItemClick}
-                />
-
-                {
-                    isAuthenticated() && userHasScopes(['write:messages']) && (
-                        <Link to='/admin'>Manage Inventory</Link>
-                    )
-                }
-
-                
-            </div>
+                <Container fluid>
+                    <div className = "store-container-component">
+                        <Row>
+                            <Col sm="6">
+                                <Title className = ""/>
+                            </Col>
+                            <Col >
+                                <ShoppingCart 
+                                    item={this.state.items} 
+                                    shoppingCart={this.state.shoppingCart} 
+                                    totalCost={this.state.totalCost} onReset = {this.state.handleReset}
+                                    onDelete = {this.state.handleDelete}
+                                    checkOut = {this.checkOut}
+                                    submit = {this.submit}
+                                    clearCart = {this.clearCart}    
+                                />
+                            </Col>
+                        </Row>
+                        {/* <Row className="space"></Row> */}
+                        <Row>
+                           
+                                <Col>
+                                    <ItemCarousel 
+                                        item={this.state.items}
+                                    />
+                                </Col>
+                           
+                        </Row>
+                        <Row>
+                            <ItemCardContainer 
+                                item={this.state.items}
+                                // onIncrement={this.handleIncrement}
+                                // addToCart={this.addToCart}
+                                // calculateTotal={this.calculateTotal}
+                                handleItemClick={this.handleItemClick}
+                            />
+                        </Row>
+                        {
+                            isAuthenticated() && userHasScopes(['write:messages']) && (
+                                <Link to='/admin'>Manage Inventory</Link>
+                            )
+                        }
+                    </div>
+                </Container>
+           
         )   
     }
 }
