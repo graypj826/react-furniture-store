@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreateItem from '../CreateItem/createItem.jsx';
 import ItemList from '../ItemList/itemList.jsx';
 import EditItem from '../EditItem/editItem.jsx';
+import ModalExample from '../EditModal/editModal';
 
 class ItemContainer extends Component {
     constructor () {
@@ -101,6 +102,9 @@ class ItemContainer extends Component {
                     item.title = parsedResponse.data.title;
                     item.description = parsedResponse.data.description;
                     item.price = parsedResponse.data.price;
+                    item.photo1URL = parsedResponse.data.photo1URL;
+                    item.photo2URL = parsedResponse.data.photo2URL;
+                    item.photo3URL = parsedResponse.data.photo3URL;
                 }
                 return item;
             });
@@ -126,13 +130,10 @@ class ItemContainer extends Component {
     render(){
         return(
             <div>
-                <h1> Item Container </h1>
-
                 <CreateItem addItem={this.addItem}/>
                 <ItemList items={this.state.items} deleteItem={this.deleteItem} showModal={this.showModal}/>
 
                 {this.state.showEdit ? <EditItem closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} itemToEdit={this.state.itemToEdit}/> : null}
-                
             </div>
         )   
     }
