@@ -52,10 +52,14 @@ class ItemCard extends Component {
                                 <ModalBody className = "item-card-modal-body">
 
                                     <img src={this.props.item.photo1URL}/>
-                                    
-                                    <p> {this.props.item.description}</p>
-            
-                                    <p> ${this.props.item.price} </p>
+                                    <div className="item-description-box"> <p className="item-description-title"> Item Description: </p>   
+                                     <p className="item-description">{this.props.item.description} </p> </div>
+                                    <div className="item-price-div">
+                                        <p>
+                                            <span className="item-price-title"> Price: </span> 
+                                            <span className="item-price"> ${this.props.item.price} </span>
+                                        </p>
+                                    </div>
             
                         
                                     {/* <button on Click={this.props.handleItemClick.bind(null,this.props.item)}> + </button> */}
