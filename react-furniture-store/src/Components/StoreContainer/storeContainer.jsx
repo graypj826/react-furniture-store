@@ -3,9 +3,9 @@ import Title from "../Title/title.jsx"
 import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
-import './style.css';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+import './style.css';
 
 class StoreContainer extends Component {
     constructor () {
@@ -135,7 +135,7 @@ class StoreContainer extends Component {
                 <Container fluid>
                     <div className = "store-container-component">
                         <Row>
-                            <Col sm="6">
+                            <Col sm="8">
                                 <Title className = ""/>
                             </Col>
                             <Col >
@@ -169,11 +169,13 @@ class StoreContainer extends Component {
                                 handleItemClick={this.handleItemClick}
                             />
                         </Row>
-                        {
-                            isAuthenticated() && userHasScopes(['write:messages']) && (
-                                <Link to='/admin'>Manage Inventory</Link>
-                            )
-                        }
+                        <Row className="manage-inventory">
+                            {
+                                isAuthenticated() && userHasScopes(['write:messages']) && (
+                                    <Link to='/admin'>Manage Inventory</Link>
+                                )
+                            }
+                        </Row>    
                     </div>
                 </Container>
            
