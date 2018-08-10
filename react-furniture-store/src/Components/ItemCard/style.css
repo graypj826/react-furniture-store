@@ -40,3 +40,40 @@
     background-color: #C1304D !important;
     color: #D8C86E !important;
   }
+
+  /* .item-card-modal-body p{
+    background-color: #C1304D !important;
+    color: #D8C86E !important;
+  } */
+
+  .item-description-box, .item-price, .item-price-title{
+    background-color: #C1304D !important;
+    color: #D8C86E !important;
+    
+
+    /* text-align: center; */
+  }
+
+ .item-price-div p{
+    background-color: #C1304D !important;
+    color: #D8C86E !important;
+    
+
+    /* text-align: center; */
+  }
+
+  .item-description-title, .item-price-title{
+    text-decoration: underline;
+  }
+
+  .item-description{
+    text-indent: 8px ;
+    color: white !important;
+    text-decoration: none;
+    /* text-align: center; */
+  }
+
+  .item-price{
+    color: white !important;
+    /* text-decoration: none; */
+  }
