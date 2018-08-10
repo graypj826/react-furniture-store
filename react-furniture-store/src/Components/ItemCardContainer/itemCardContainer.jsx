@@ -39,7 +39,7 @@ class ItemCardContainer extends Component {
          
                         <Row className="item-card-container-title">
                             <Col>
-                                <strong > ItemCardContainer </strong>
+                                <strong > See What's In Stock: </strong>
                             </Col>
                         </Row>
                         <Row>
