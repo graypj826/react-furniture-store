@@ -169,13 +169,7 @@ class StoreContainer extends Component {
                                 handleItemClick={this.handleItemClick}
                             />
                         </Row>
-                        <Row className="manage-inventory">
-                            {
-                                isAuthenticated() && userHasScopes(['write:messages']) && (
-                                    <Link to='/admin'>Manage Inventory</Link>
-                                )
-                            }
-                        </Row>    
+                        <Button> <Link to='/admin'>Manage Inventory</Link> </Button>   
                     </div>
                 </Container>
            
