@@ -4,7 +4,7 @@ import ShoppingCart from "../ShoppingCart/shoppingCart.jsx"
 import ItemCarousel from "../ItemCarousel/itemCarousel.jsx"
 import ItemCardContainer from "../ItemCardContainer/itemCardContainer.jsx"
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 import './style.css';
 
 class StoreContainer extends Component {
