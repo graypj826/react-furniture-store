@@ -27,41 +27,7 @@ class Admin extends Component {
     const { isAuthenticated } = this.props.auth;
     return (
       <div>
-        <Container>
-          {
-            isAuthenticated() &&
-            <div className="container column">
-              <Row>
-                <h5>
-                  You are logged in!{' '}
-                  <a
-                    style={{ cursor: 'pointer' }}
-                    onClick={this.logout}
-                  >
-                    Log Out
-                  </a>.
-                </h5>
-                <ItemContainer />
-              </Row>
-            </div>
-          }
-          {
-            !isAuthenticated() && (
-              <div className="container column">
-                <h5>
-                  You are not logged in! Please{' '}
-                  <a
-                    style={{ cursor: 'pointer' }}
-                    onClick={this.login}
-                  >
-                    Log In
-                  </a>
-                  {' '}to continue.
-                </h5>
-              </div>
-            )
-          }
-        </Container>
+        <ItemContainer /> 
       </div>
       );
     }
