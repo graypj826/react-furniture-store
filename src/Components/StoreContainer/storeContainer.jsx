@@ -127,6 +127,9 @@ class StoreContainer extends Component {
         this.setState({shoppingCart : []});
         this.setState({totalCost: 0})
     }
+    toggleCreateItem = () => {
+        this.setState({})
+    }
 
     render(){
         const isAuthenticated = this.isAuthenticated;
