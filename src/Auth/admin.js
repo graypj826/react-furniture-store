@@ -24,7 +24,6 @@ class Admin extends Component {
   }
   render() {
     // calls the isAuthenticated method in authentication service
-    const { isAuthenticated } = this.props.auth;
     return (
       <div>
         <ItemContainer /> 
