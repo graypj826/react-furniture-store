@@ -32,7 +32,6 @@ class StoreContainer extends Component {
             method: "GET" 
         });
         const itemsJson = await items.json();
-        console.log(itemsJson);
         return itemsJson;
     };
     handleIncrement = (item) => {
@@ -105,12 +104,17 @@ class StoreContainer extends Component {
         let {token} = await this.props.stripe.createToken({name: "Name"});
         console.log(token)
         console.log(ev)
-        let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
-          method: "POST",
-          headers: {"Content-Type": "text/plain"},
-          body: token.id
-        });
         console.log(this.state.totalCost)
+        try{
+            let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
+                method: "POST",
+                headers: {"Content-Type": "text/plain"},
+                body: token.id
+            });
+            console.log(response.body)
+        } catch(err){
+            console.log(err,"error")
+        }
         if (response.ok) this.setState({purchaseComplete: true});
         console.log("Submit was completed")
     }
