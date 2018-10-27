@@ -9,15 +9,19 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
+    console.log(ev)
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    let response = await fetch("http://localhost:9000/charge", {
-      method: "POST",
-      headers: {"Content-Type": "text/plain"},
-      body: token.id
-    });
-  
-    if (response.ok) this.setState({purchaseComplete: true});
-    console.log()
+    console.log(this.props.totalCost)
+    try { let response = await fetch("http://localhost:9000/charge", {
+        method: "POST",
+        headers: {"Content-Type": "text/plain"},
+        body: token.id
+        });
+      if (response.ok) this.setState({purchaseComplete: true});
+      console.log(response)
+      }catch(err){
+        console.log(err)
+      }
   }
 
   
