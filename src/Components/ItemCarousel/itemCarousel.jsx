@@ -72,7 +72,7 @@ import {
           <CarouselItem
             onExiting={this.onExiting}
             onExited={this.onExited}
-            key={item._id}
+            key={item._id+"a"}
           >
             <img src={item.photo1URL} alt={item.description} />
             {/* <CarouselCaption captionText={item.title} captionHeader={item.title} /> */}
