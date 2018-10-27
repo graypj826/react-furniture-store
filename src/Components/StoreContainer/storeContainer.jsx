@@ -103,12 +103,14 @@ class StoreContainer extends Component {
     async submit(ev) {
         console.log("checkout form submitted")
         let {token} = await this.props.stripe.createToken({name: "Name"});
+        console.log(token)
+        console.log(ev)
         let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
           method: "POST",
           headers: {"Content-Type": "text/plain"},
           body: token.id
         });
-      
+        console.log(this.state.totalCost)
         if (response.ok) this.setState({purchaseComplete: true});
         console.log("Submit was completed")
     }
