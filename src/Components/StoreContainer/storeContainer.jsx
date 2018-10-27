@@ -104,7 +104,7 @@ class StoreContainer extends Component {
         console.log(token)
         console.log(ev)
         console.log(this.state.totalCost)
-        try{
+
             let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
                 method: "POST",
                 headers: {"Content-Type": "text/plain"},
@@ -112,9 +112,6 @@ class StoreContainer extends Component {
             });
             if (response.ok) this.setState({purchaseComplete: true});
             console.log("Submit was completed")
-        } catch(err){
-            console.log(err,"error")
-        }
         
     }
     userHasScopes = (scopes) => {
