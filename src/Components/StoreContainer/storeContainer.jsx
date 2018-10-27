@@ -71,7 +71,6 @@ class StoreContainer extends Component {
         let total = 0
         this.state.shoppingCart.map(item => {
             total += item.price
-            console.log(total)
             return total
         })
         this.setState({totalCost : total})
@@ -111,12 +110,12 @@ class StoreContainer extends Component {
                 headers: {"Content-Type": "text/plain"},
                 body: token.id
             });
-            console.log(response.body)
+            if (response.ok) this.setState({purchaseComplete: true});
+            console.log("Submit was completed")
         } catch(err){
             console.log(err,"error")
         }
-        if (response.ok) this.setState({purchaseComplete: true});
-        console.log("Submit was completed")
+        
     }
     userHasScopes = (scopes) => {
         const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
