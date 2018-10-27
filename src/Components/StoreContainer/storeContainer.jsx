@@ -100,21 +100,21 @@ class StoreContainer extends Component {
     };
     async submit (ev){
         console.log("checkout form submitted")
-        // let {token} = await this.props.stripe.createToken({name: "Name"});
-        // console.log(token)
-        // console.log(ev)
-        // console.log(this.state.totalCost)
-        // try{
-        //     let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
-        //         method: "POST",
-        //         headers: {"Content-Type": "text/plain"},
-        //         body: token.id
-        //     });
-        //     if (response.ok) this.setState({purchaseComplete: true});
-        //     console.log("Submit was completed")
-        // } catch(err){
-        //     console.log(err)
-        // }
+        let {token} = await this.props.stripe.createToken({name: "Name"});
+        console.log(token)
+        console.log(ev)
+        console.log(this.state.totalCost)
+        try{
+            let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
+                method: "POST",
+                headers: {"Content-Type": "text/plain"},
+                body: token.id
+            });
+            if (response.ok) this.setState({purchaseComplete: true});
+            console.log("Submit was completed")
+        } catch(err){
+            console.log(err)
+        }
     }
     userHasScopes = (scopes) => {
         const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
