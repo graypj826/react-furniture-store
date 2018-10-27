@@ -67,7 +67,7 @@ import {
       const { activeIndex } = this.state;
   
       const slides = this.props.item.map((item) => {
-        console.log(item._id)
+        console.log(item._id+"a")
         return (
           <CarouselItem
             onExiting={this.onExiting}

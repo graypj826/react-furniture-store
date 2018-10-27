@@ -20,7 +20,7 @@ class CheckoutForm extends Component {
   //   console.log()
   // }
   //this.props.clearCart(); this.props.toggle()}
-  // {this.props.submit}
+  // 
   render() {
     if (this.props.purchaseComplete) return <h1>Purchase Complete</h1>;
   
@@ -28,7 +28,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={() => {console.log("clicked")} }>Pay : {this.props.totalCost}</button>
+        <button onClick={() => {this.props.submit()} }>Pay : {this.props.totalCost}</button>
       </div>
     );
   }
