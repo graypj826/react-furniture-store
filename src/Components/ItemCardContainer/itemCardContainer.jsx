@@ -49,7 +49,7 @@ class ItemCardContainer extends Component {
                                     <Col className="item-card-col">
                                         <ItemCard 
                                         
-                                        key={item._id}
+                                        key={item._id+"b"}
                                         item={item}
                                         // onIncrement={this.props.onIncrement}
                                         // addToCart={this.props.addToCart}
