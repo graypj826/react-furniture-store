@@ -66,13 +66,13 @@ import {
     render() {
       const { activeIndex } = this.state;
   
-      const slides = this.props.item.map((item, i) => {
-        console.log(item)
+      const slides = this.props.item.map((item) => {
+        console.log(item._id)
         return (
           <CarouselItem
             onExiting={this.onExiting}
             onExited={this.onExited}
-            key={item.id}
+            key={item._id}
           >
             <img src={item.photo1URL} alt={item.description} />
             {/* <CarouselCaption captionText={item.title} captionHeader={item.title} /> */}

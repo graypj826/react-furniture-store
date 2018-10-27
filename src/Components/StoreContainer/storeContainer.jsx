@@ -98,7 +98,7 @@ class StoreContainer extends Component {
             console.log(err, "error");
         }
     };
-    async submit(ev) {
+    submit = async (ev) => {
         console.log("checkout form submitted")
         let {token} = await this.props.stripe.createToken({name: "Name"});
         console.log(token)
