@@ -65,7 +65,7 @@ class ShoppingCart extends Component {
                                 > 
                                     checkout
                             </button>  */}
-                            <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                            <StripeProvider apiKey="pk_test_qZbWBsGhk9N3YZgwePpA3tez">
                                 <div className="stripProvider">
                                     <h1>Complete Checkout?</h1>
                                     <Elements>
