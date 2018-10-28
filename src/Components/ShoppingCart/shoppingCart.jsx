@@ -71,7 +71,6 @@ class ShoppingCart extends Component {
                                     <Elements>
                                         <CheckoutForm 
                                         totalCost={this.props.totalCost}
-                                        submit = {this.props.submit}
                                         clearCart = {this.props.clearCart} 
                                         toggle = {this.toggle}   
                                         />
