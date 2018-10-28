@@ -15,7 +15,7 @@ class CheckoutForm extends Component {
       let response = await fetch("/charge", {
         method: "POST",
         headers: {"Content-Type": "text/plain"},
-        body: token
+        body: token.id
     });
   
     if (response.ok) console.log("Purchase Complete!")
