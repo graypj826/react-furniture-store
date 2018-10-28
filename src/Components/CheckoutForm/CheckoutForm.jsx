@@ -20,7 +20,7 @@ class CheckoutForm extends Component {
         });
       if (response.ok) this.setState({purchaseComplete: true});
       console.log(response)
-    
+      this.props.clearCart()
     }catch(err){
         console.log(err)
     }
@@ -34,7 +34,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={() => {this.submit(this); this.props.clearCart(); this.props.toggle()}}>Pay : {this.props.totalCost}</button>
+        <button onClick={() => {this.submit(this); this.props.toggle()}}>Pay : {this.props.totalCost}</button>
       </div>
     );
   }
