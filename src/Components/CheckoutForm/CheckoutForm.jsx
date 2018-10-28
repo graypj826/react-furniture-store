@@ -9,7 +9,7 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
-    console.log(submitted FormData.)
+    console.log("submitted FormData")
     console.log(ev)
     let {token} = await this.props.stripe.createToken({name: "Name"});
     console.log(this.props.totalCost)
