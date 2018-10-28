@@ -9,6 +9,7 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
+    console.log(submitted FormData.)
     console.log(ev)
     let {token} = await this.props.stripe.createToken({name: "Name"});
     console.log(this.props.totalCost)
@@ -19,9 +20,10 @@ class CheckoutForm extends Component {
         });
       if (response.ok) this.setState({purchaseComplete: true});
       console.log(response)
-      }catch(err){
+    
+    }catch(err){
         console.log(err)
-      }
+    }
   }
 
   
@@ -32,7 +34,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={() => {this.props.submit; this.props.clearCart(); this.props.toggle()}}>Pay : {this.props.totalCost}</button>
+        <button onClick={() => {this.submit; this.props.clearCart(); this.props.toggle()}}>Pay : {this.props.totalCost}</button>
       </div>
     );
   }
