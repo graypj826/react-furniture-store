@@ -7,26 +7,33 @@ class CheckoutForm extends Component {
     super(props);
     this.submit = this.submit.bind(this);
   }
-
-  submit = async(ev) => {
-    console.log("submitted FormData")
-    console.log(ev)
+  async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    console.log(this.props.totalCost)
-    try { let response = await fetch("http://localhost:9000/charge", {
+    let response = await fetch("/charge", {
+      method: "POST",
+      headers: {"Content-Type": "text/plain"},
+      body: token.id
+    });
+  
+    if (response.ok) console.log("Purchase Complete!")
+  }
+  async submit(ev) {
+    console.log("checkout form submitted")
+    try{
+      let {token} = await this.props.stripe.createToken({name: "Name"});
+      let response = await fetch("/charge", {
         method: "POST",
         headers: {"Content-Type": "text/plain"},
         body: token.id
-        });
-      if (response.ok) this.setState({purchaseComplete: true});
-      console.log(response)
-      this.props.clearCart()
-    }catch(err){
-        console.log(err)
+    });
+  
+    if (response.ok) console.log("Purchase Complete!")
+    if (response.ok) {this.props.clearCart()}
+    if (response.ok) {this.props.toggle()}
+    } catch(err){
+      console.log(err)
     }
   }
-
-  
   render() {
     if (this.props.purchaseComplete) return <h1>Purchase Complete</h1>;
   
@@ -34,7 +41,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={() => {this.submit(this); this.props.toggle()}}>Pay : {this.props.totalCost}</button>
+        <button onClick={this.submit}>Pay : {this.props.totalCost}</button>
       </div>
     );
   }
