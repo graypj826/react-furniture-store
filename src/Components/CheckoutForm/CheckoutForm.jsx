@@ -33,7 +33,8 @@ class CheckoutForm extends Component {
     try{
       let response = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Access-Control-Allow-Origin":" https://reactfurniturestore.herokuapp.com"
+          "Content-Type": "application/json"},
         body: JSON.stringify(amount)
       });
       const content = await response.json()
