@@ -26,14 +26,16 @@ class CheckoutForm extends Component {
       console.log(err)
     }
   }
-  async charge(amount) {
+  async charge() {
     console.log("charge amount submitted")
+    amount = this.props.totalCost
     try{
       let response = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
         method: "POST",
         headers: {"Content-Type": "text/plain"},
         body: amount
       });
+      console.log(response)
     } catch(err){
       console.log(err)
 
@@ -46,7 +48,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={this.charge(this.props.totalCost)}>Pay : {this.props.totalCost}</button>
+        <button onClick={this.charge}>Pay : {this.props.totalCost}</button>
       </div>
     );
   }
