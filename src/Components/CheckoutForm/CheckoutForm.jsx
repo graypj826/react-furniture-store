@@ -10,7 +10,7 @@ class CheckoutForm extends Component {
   async submit(ev) {
     console.log("checkout form submitted")
     try{
-      let {token} = await this.props.stripe.createToken({name: "Name"});
+      let {token} = await this.props.stripe.createToken({name: "Name", amount:this.props.totalCost});
       console.log(token);
       let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
         method: "POST",
