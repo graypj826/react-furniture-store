@@ -26,9 +26,9 @@ class CheckoutForm extends Component {
       console.log(err)
     }
   }
-  async charge() {
+  async charge(props) {
     console.log("charge amount submitted")
-    let amount = this.props.totalCost
+    let amount = props.totalCost
     try{
       let response = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
         method: "POST",
