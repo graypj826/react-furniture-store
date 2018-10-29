@@ -6,6 +6,7 @@ class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
+    this.charge = this.charge.bind(this)
   }
   async submit(ev) {
     console.log("checkout form submitted")
@@ -26,16 +27,17 @@ class CheckoutForm extends Component {
       console.log(err)
     }
   }
-  async charge(props) {
+  async charge() {
     console.log("charge amount submitted")
-    let amount = props.totalCost
+    let amount = this.props.totalCost
     try{
       let response = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
         method: "POST",
-        headers: {"Content-Type": "text/plain"},
-        body: amount
+        headers: {"Accept":"application/json","Content-Type": "application/json",},
+        body: JSON.stringify(amount)
       });
-      console.log(response)
+      const content = await response.json()
+      console.log(content)
     } catch(err){
       console.log(err)
 
