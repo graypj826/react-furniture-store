@@ -33,7 +33,7 @@ class CheckoutForm extends Component {
     try{
       let response = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
         method: "POST",
-        headers: {"Access-Control-Allow-Origin":"https://reactfurniturestore.herokuapp.com",
+        headers: {
           "Content-Type": "application/json"},
         body: JSON.stringify(amount)
       });
@@ -51,7 +51,7 @@ class CheckoutForm extends Component {
       <div className="checkout checkout-form-component">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={this.charge}>Pay : {this.props.totalCost}</button>
+        <button onClick={this.charge}>Pay : $ {this.props.totalCost}</button>
       </div>
     );
   }
