@@ -76,7 +76,7 @@ class StoreContainer extends Component {
         this.setState({totalCost : total})
         
     }
-    checkOut = async (checkout, e) => {
+    checkOut = async () => {
         console.log("checkout called")
         console.log(checkout)
         e.preventDefault();

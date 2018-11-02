@@ -32,7 +32,7 @@ class CheckoutForm extends Component {
     let amount = this.props.totalCost
     try{
       let response = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"},
         body: JSON.stringify(amount)
@@ -44,6 +44,16 @@ class CheckoutForm extends Component {
 
     }
   }
+  // fetch(url, {
+  //   method: 'POST', // or 'PUT'
+  //   body: JSON.stringify(data), // data can be `string` or {object}!
+  //   headers:{
+  //     'Content-Type': 'application/json'
+  //   }
+  // }).then(res => res.json())
+  // .then(response => console.log('Success:', JSON.stringify(response)))
+  // .catch(error => console.error('Error:', error));
+
   render() {
     if (this.props.purchaseComplete) return <h1>Purchase Complete</h1>;
   
