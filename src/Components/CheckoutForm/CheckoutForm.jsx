@@ -19,18 +19,18 @@ class CheckoutForm extends Component {
 
       let responseToken = await fetch("https://furnitureapi.herokuapp.com/charge", {
         method: "POST",
-        headers: {"Content-Type": "text/plain"},
-        body: token.id
+        headers: {"Content-Type": 'application/json'},
+        body: JSON.stringify(data)
 
       })  
       
-      let responseData = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
-                method: 'PUT',
-                body: JSON.stringify(this.props.totalCost),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-      })
+      // let responseData = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
+      //           method: 'PUT',
+      //           body: JSON.stringify(this.props.totalCost),
+      //           headers: {
+      //               'Content-Type': 'application/json'
+      //           }
+      // })
       
     if (responseToken.ok) console.log("Purchase Complete!")
     this.props.clearCart()
