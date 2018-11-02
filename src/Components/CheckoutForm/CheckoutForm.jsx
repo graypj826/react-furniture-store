@@ -16,14 +16,23 @@ class CheckoutForm extends Component {
       console.log(token);
       let data = {token:token,amount:this.props.totalCost}
       console.log(data)
-      
-      let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
+
+      let responseToken = await fetch("https://furnitureapi.herokuapp.com/charge", {
         method: "POST",
         headers: {"Content-Type": "text/plain"},
-        body: data
-    });
+        body: token.id
 
-    if (response.ok) console.log("Purchase Complete!")
+      })  
+      
+      let responseData = await fetch("https://furnitureapi.herokuapp.com/charge/total", {
+                method: 'PUT',
+                body: JSON.stringify(this.props.totalCost),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+      })
+      
+    if (responseToken.ok) console.log("Purchase Complete!")
     this.props.clearCart()
     this.props.toggle()
     } catch(err){
