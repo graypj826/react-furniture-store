@@ -14,11 +14,13 @@ class CheckoutForm extends Component {
       // await this.charge(this.props.totalCost);
       let {token} = await this.props.stripe.createToken({name: "Name", amount:this.props.totalCost});
       console.log(token);
+      let data = {token:token,amount:this.props.totalCost}
+      console.log(data)
       
       let response = await fetch("https://furnitureapi.herokuapp.com/charge", {
         method: "POST",
         headers: {"Content-Type": "text/plain"},
-        body: token.id
+        body: data
     });
 
     if (response.ok) console.log("Purchase Complete!")
