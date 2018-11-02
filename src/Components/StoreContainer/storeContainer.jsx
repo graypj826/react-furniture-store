@@ -76,28 +76,28 @@ class StoreContainer extends Component {
         this.setState({totalCost : total})
         
     }
-    checkOut = async () => {
-        console.log("checkout called")
-        console.log(checkout)
-        e.preventDefault();
-        try {
-            const createCheckout = await fetch('https://furnitureapi.herokuapp.com/checkout/', {
-                method: 'POST',
-                credentials: 'include',
-                body: JSON.stringify(checkout),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+    // checkOut = async () => {
+    //     console.log("checkout called")
+    //     console.log(checkout)
+    //     e.preventDefault();
+    //     try {
+    //         const createCheckout = await fetch('https://furnitureapi.herokuapp.com/checkout/', {
+    //             method: 'POST',
+    //             credentials: 'include',
+    //             body: JSON.stringify(checkout),
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
             
-            const parsedResponse = await createCheckout.json();
+    //         const parsedResponse = await createCheckout.json();
         
-            console.log(parsedResponse);
+    //         console.log(parsedResponse);
     
-        } catch (err) {
-            console.log(err, "error");
-        }
-    };
+    //     } catch (err) {
+    //         console.log(err, "error");
+    //     }
+    // };
     // async submit (ev){
     //     console.log("checkout form submitted")
     //     let {token} = await this.state.stripe.createToken({name: "Name"});
